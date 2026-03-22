@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="{{ url_for('static',filename='css/navbar.css' ) }}">
+<link rel="shortcut icon" href="{{ url_for('static',filename='image/logo.svg' ) }}" type="image/x-icon">
+<script src="{{ url_for('static',filename='script/navbar.js' ) }}"></script>
+<nav>
+    <ul>
+        <li>
+            <img class="hb" src="{{ url_for('static',filename='image/hamburger.svg') }}" alt="logo">
+        </li>
+        <li class="brand">
+            <a class="tl" href="{{ url_for('home') }}">
+                <h2 class="title">Faculty Feedback Form</h2>
+            </a>
+        </li>
+        <li style="margin-left: auto;margin-right: 10px;"><a class="ab_link" href="{{ url_for('about' ) }}">
+                <h4>About Us</h4>
+            </a></li>
+    </ul>
+</nav>

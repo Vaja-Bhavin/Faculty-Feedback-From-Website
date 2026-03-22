@@ -1,0 +1,64 @@
+{
+    "1": {
+        "1": {
+            "Code": "DI01016011",
+            "Name": "Python Programming"
+        },
+        "2": {
+            "Code": "DI01016021",
+            "Name": "Introduction to I.T. Systems"
+        },
+        "3": {
+            "Code": "DI01016031",
+            "Name": "Web Development using PHP"
+        }
+    },
+    "2": {
+        "1": {
+            "Code": "DI02016011",
+            "Name": "Advanced Python Programming"
+        },
+        "2": {
+            "Code": "DI02016021",
+            "Name": "Fundamentals of Software Development"
+        }
+    },
+    "3": {
+        "1": {
+            "Code": "DI03016011",
+            "Name": "Digital Marketing"
+        },
+        "2": {
+            "Code": "DI03016021",
+            "Name": "Cryptography and Web Security"
+        },
+        "3": {
+            "Code": "DI03016031",
+            "Name": "Data Structures with Python"
+        },
+        "4": {
+            "Code": "DI03016041",
+            "Name": "Database Management"
+        },
+        "5": {
+            "Code": "DI03016051",
+            "Name": "Object Oriented Programming with JAVA"
+        },
+        "6": {
+            "Code": "DI03016061",
+            "Name": "Operating Systems"
+        }
+    },
+    "4": {
+        "1": {
+            "Code": "DI04016011",
+            "Name": "Xyz"
+        },
+        "2": {
+            "Code": "DI04016081",
+            "Name": "DMW"
+        }
+    },
+    "5": {},
+    "6": {}
+}
