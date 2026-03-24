@@ -1,5 +1,6 @@
 nav {
-    background-color: black;
+    /* background-color: black; */
+    background: linear-gradient(to right, rgb(72, 0, 255),rgb(129, 30, 196));
     color: white;
     display: flex;
     align-items: center;
