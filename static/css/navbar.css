@@ -9,6 +9,7 @@ nav {
     position: fixed;
     top: 0;
 }
+
 ul {
     width: 100%;
     list-style: none;
@@ -56,17 +57,24 @@ ul {
 }
 
 @media (max-width: 768px) {
-    .title,.ab_link {
+
+    .title,
+    .ab_link {
         font-size: 25px;
     }
+
     .ab_link:hover {
         font-size: 25.5px;
     }
 }
+
 @media (max-width: 480px) {
-    .title,.ab_link {
+
+    .title,
+    .ab_link {
         font-size: 18px;
     }
+
     .ab_link:hover {
         font-size: 18.5px;
     }
