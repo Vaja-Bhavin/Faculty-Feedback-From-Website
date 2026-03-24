@@ -63,10 +63,12 @@ ul {
     .ab_link {
         font-size: 25px;
     }
-
-    .ab_link:hover {
-        font-size: 25.5px;
+    .ab_link {
+        display: none;
     }
+    /* .ab_link:hover {
+        font-size: 25.5px;
+    } */
 }
 
 @media (max-width: 480px) {
