@@ -1,6 +1,6 @@
 nav {
     /* background-color: black; */
-    background: linear-gradient(to right, rgb(72, 0, 255),rgb(129, 30, 196));
+    background: linear-gradient(to right, rgb(72, 0, 255), rgb(129, 30, 196));
     color: white;
     display: flex;
     align-items: center;
@@ -63,9 +63,7 @@ ul {
     .ab_link {
         font-size: 25px;
     }
-    .ab_link {
-        display: none;
-    }
+
     /* .ab_link:hover {
         font-size: 25.5px;
     } */
@@ -73,12 +71,16 @@ ul {
 
 @media (max-width: 480px) {
 
-    .title,
-    .ab_link {
+    .title {
         font-size: 18px;
     }
 
     .ab_link:hover {
         font-size: 18.5px;
     }
+
+    .ab_link {
+        display: none;
+    }
+
 }
