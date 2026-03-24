@@ -1,9 +1,11 @@
 nav {
+    background-color: black;
+    color: white;
     display: flex;
     align-items: center;
     height: 8vh;
     width: 100%;
-    box-shadow: 3px 3px 8px black;
+    box-shadow: 3px 3px 8px white;
     position: fixed;
     top: 0;
 }
@@ -16,13 +18,14 @@ ul {
 }
 
 .hb {
+    filter: invert(1);
     align-self: center;
     margin-left: 7px;
     height: 7vh;
 }
 
 .ab_link {
-    color: black;
+    color: white;
     font-weight: normal;
     text-decoration: none;
 }
@@ -43,7 +46,7 @@ ul {
     align-items: center;
     gap: 8px;
     text-decoration: none;
-    color: black;
+    color: white;
 }
 
 .title {
