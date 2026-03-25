@@ -9,4 +9,7 @@ def home():
 def about():
     return render_template("about.html")
 
+@app.route("/student")
+def student():
+    return render_template("student.html")
 app.run(debug=True)

@@ -3,12 +3,12 @@
     flex-direction: column;
     position: fixed;
     /* left: -33%; */
-    left: -480px;
+    left: -400px;
     box-shadow: none;
     border-right: none;
     height: 100%;
     /* width: 33%; */
-    width: 480px;
+    width: 400px;
     color: black;
     background-color: white;
     transition: all 0.7s ease;
@@ -53,6 +53,23 @@
     z-index: 2;
     right: 0;
     transition: all 1s ease;
+}
+
+.links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    padding-left: 62px;
+    margin-top: 25px;
+}
+
+.links > li {
+    /* border-top: 1px solid black; */
+    border-bottom: 1px solid black;
+}
+.links a {
+    color: black;
+    text-decoration: none;
 }
 
 @media (max-width: 768px) {
