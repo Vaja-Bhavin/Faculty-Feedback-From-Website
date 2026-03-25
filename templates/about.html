@@ -1,13 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us</title>
-    <link rel="stylesheet" href="{{ url_for('static',filename='css/about.css' ) }}">
-</head>
-<body>
-    {% include 'navbar.html'   %}
-    {% include 'sidebar.html'   %}
-</body>
-</html>
+<link rel="stylesheet" href="{{ url_for('static',filename='css/about.css' ) }}">
+{% extends 'base.html' %}
+
+{% block title %}
+About Us
+{% endblock %}
+{% block content %}
+    About Us
+{% endblock %}

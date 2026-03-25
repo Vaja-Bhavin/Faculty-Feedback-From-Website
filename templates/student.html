@@ -1,14 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student</title>
-    <link rel="stylesheet" href="{{ url_for('static',filename='css/student.css' ) }}">
-</head>
-<body>
-    {% include 'navbar.html'   %}
-    {% include 'sidebar.html'   %}
-    Student
-</body>
-</html>
+<link rel="stylesheet" href="{{ url_for('static',filename='css/student.css' ) }}">
+{% extends 'base.html' %}
+
+{% block title %}
+Student
+{% endblock %}
+{% block content %}
+    <div>
+        student
+    </div>
+{% endblock %}

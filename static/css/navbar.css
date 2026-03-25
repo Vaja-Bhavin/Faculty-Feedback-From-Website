@@ -1,3 +1,16 @@
+header {
+    height: 55vh;
+    color: white;
+    /* background-image: url(../image/bg.jpg); */
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+@media (max-width: 480px) {
+    header {
+        height: 40vh;
+    }
+}
 nav {
     /* background-color: black; */
     background: linear-gradient(to right, rgb(72, 0, 255), rgb(129, 30, 196));
