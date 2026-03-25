@@ -1,5 +1,6 @@
 .sidebar {
     display: flex;
+    flex-direction: column;
     position: fixed;
     /* left: -33%; */
     left: -480px;
@@ -29,7 +30,7 @@
 .box-1 {
     height: 50px;
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
     gap: 10px;
     margin-top: 10px;
