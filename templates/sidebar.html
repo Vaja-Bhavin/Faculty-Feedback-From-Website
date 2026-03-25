@@ -1,19 +1,27 @@
 <link rel="stylesheet" href="{{ url_for('static',filename='css/sidebar.css' ) }}">
 <script src="{{ url_for('static',filename='script/sidebar.js' ) }}"></script>
-<div class="sidebar">
+<div class="sidebar active">
     <div class="box-1">
         <img class="cancel" src="{{ url_for('static',filename='image/cancel.svg' ) }}" alt="">
         <h3>Faculty Feedback Form</h3>
     </div>
     <div class="pages">
         <ul class="links">
-            <li><a href="{{ url_for('home' ) }}"><h3>Home</h3></a></li>
-            <li><a href="{{ url_for('student' ) }}"><h3>Student</h3></a></li>
+            <li><a href="{{ url_for('home' ) }}">
+                    <h3>Home</h3>
+                </a></li>
+            <li class="expli" style="padding-left: 21px;">
+                <div class="exp"><img src="{{ url_for('static',filename='image/caret.svg' ) }}" alt=""><a
+                        href="{{ url_for('student' ) }}">
+                        <h3>Student</h3>
+                    </a>
+                </div>
+            </li>
         </ul>
-        
-        
+
+
     </div>
 </div>
 <div class="blur">
-    
+
 </div>
