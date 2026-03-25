@@ -12,4 +12,9 @@ def about():
 @app.route("/student")
 def student():
     return render_template("student.html")
+
+@app.route("/student/givefeedback")
+def givefeedback():
+    return render_template("givefd.html")
+
 app.run(debug=True)

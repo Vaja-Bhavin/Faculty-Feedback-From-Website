@@ -11,10 +11,16 @@
                     <h3>Home</h3>
                 </a></li>
             <li class="expli" style="padding-left: 21px;">
-                <div class="exp"><img src="{{ url_for('static',filename='image/caret.svg' ) }}" alt=""><a
-                        href="{{ url_for('student' ) }}">
-                        <h3>Student</h3>
-                    </a>
+                <div class="exp">
+                    <div style="display: flex; flex-direction: row;">
+                        <img src="{{ url_for('static',filename='image/caret.svg' ) }}" alt=""><a
+                            href="{{ url_for('student' ) }}">
+                            <h3>Student</h3>
+                        </a>
+                    </div>
+                    <div class="stdlinks">
+                        <a href="student/givefeedback">Give Feedback</a>
+                    </div>
                 </div>
             </li>
         </ul>
