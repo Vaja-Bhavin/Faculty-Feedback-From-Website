@@ -105,9 +105,13 @@ a {
     flex-direction: column;
     margin-top: 5px;
     margin-left: 18px;
-    gap: 5px;
 }
-
+.stdlinks > ul {
+    list-style: circle;
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+}
 .stdlinks a {
     font-size: 17px;
     /* font-size: medium; */
@@ -128,7 +132,7 @@ a {
     transition: transform 0.3s;
 }
 
-.stdlinks>a:hover {
+.stdlinks a:hover {
     font-weight: bold;
 }
 

@@ -13,13 +13,31 @@
                 <div class="exp">
                     <div class="outer" style="display: flex; flex-direction: row;">
                         <img src="{{ url_for('static',filename='image/caret.svg' ) }}" alt="">
-                            <h3>
-                                Student
-                            </h3>
+                        <h3>
+                            Student
+                        </h3>
                     </div>
                     <div class="stdlinks">
-                        <a href="/student/home">Home - Student</a>
-                        <a href="/student/givefeedback">Give Feedback</a>
+                        <ul>
+                            <li><a href="/student/home">Home - Student</a></li>
+                            <li><a href="/student/givefeedback">Give Feedback</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li class="expli">
+                <div class="exp">
+                    <div class="outer" style="display: flex; flex-direction: row;">
+                        <img src="{{ url_for('static',filename='image/caret.svg' ) }}" alt="">
+                        <h3>
+                            Faculty
+                        </h3>
+                    </div>
+                    <div class="stdlinks">
+                        <ul>
+                            <li><a href="/faculty/home">Home - Faculty</a></li>
+                            <!-- <li><a href="/student/givefeedback">Give Feedback</a></li> -->
+                        </ul>
                     </div>
                 </div>
             </li>
