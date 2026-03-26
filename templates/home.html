@@ -5,12 +5,13 @@ Home
 {% endblock %}
 {% block content %}
 <link rel="stylesheet" href="{{ url_for('static',filename='css/home.css' ) }}">
+<h2 style="text-align: center;padding-top: 25px;">Select Your Role:</h2>
 <div class="options">
-    <div class="opt1" onclick="location.href = '/student'">
+    <div class="opt1" onclick="location.href = '/student/home'">
         <img src="{{ url_for('static',filename='image/student1.svg' ) }}" alt="">
         <h2>Student</h2>
     </div>
-    <div class="opt2" onclick="location.href = '/faculty'">
+    <div class="opt2" onclick="location.href = '/faculty/home'">
         <img src="{{ url_for('static',filename='image/faculty.svg' ) }}" alt="">
         <h2>Faculty</h2>
     </div>

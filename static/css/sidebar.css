@@ -27,7 +27,7 @@
     margin-left: 10px;
 }
 
-.box-1 {
+.box-t {
     height: 50px;
     display: flex;
     /* justify-content: center; */
@@ -36,7 +36,7 @@
     margin-top: 10px;
 }
 
-.box-1>h3 {
+.box-t>h3 {
     background: linear-gradient(to right, rgb(72, 0, 255), rgb(129, 30, 196));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
