@@ -4,5 +4,15 @@
 Home
 {% endblock %}
 {% block content %}
-    <div style="height: 150vh;"></div>
+<link rel="stylesheet" href="{{ url_for('static',filename='css/home.css' ) }}">
+<div class="options">
+    <div class="opt1" onclick="location.href = '/student'">
+        <img src="{{ url_for('static',filename='image/student1.svg' ) }}" alt="">
+        <h2>Student</h2>
+    </div>
+    <div class="opt2" onclick="location.href = '/faculty'">
+        <img src="{{ url_for('static',filename='image/faculty.svg' ) }}" alt="">
+        <h2>Faculty</h2>
+    </div>
+</div>
 {% endblock %}

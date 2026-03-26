@@ -1,5 +1,5 @@
 header {
-    height: 55vh;
+    height: 8vh;
     color: white;
     /* background-image: url(../image/bg.jpg); */
     background-position: center;
@@ -13,7 +13,8 @@ header {
 }
 nav {
     /* background-color: black; */
-    background: linear-gradient(to right, rgb(72, 0, 255), rgb(129, 30, 196));
+    /* background: linear-gradient(to right, rgb(72, 0, 255), rgb(129, 30, 196)); */
+    background: linear-gradient(to right, rgb(111, 0, 255), rgb(129, 30, 196));
     color: white;
     display: flex;
     align-items: center;

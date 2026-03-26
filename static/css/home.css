@@ -1,0 +1,32 @@
+.options {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 200px;
+    padding-top: 50px;
+}
+.options img {
+    border: 2px solid;
+    border-radius: 90px;
+    height:150px;
+}
+
+.options > div {
+    transition: transform 0.5s ease;
+    background-position: left;
+    padding: 30px;
+    border: 2px solid ;
+    border-image: linear-gradient(to right, rgb(72, 0, 255), rgb(129, 30, 196)) 1;
+    text-align: center; 
+}
+.options > div > h2 {
+    margin-top: 10px;
+}
+.options > div > img {
+    background:white;
+}
+
+.options > div:hover {
+    box-shadow: 0 0 15px rgb(153, 52, 183);
+    transform: translateY(-5px);
+}
