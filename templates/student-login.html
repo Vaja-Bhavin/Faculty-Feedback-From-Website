@@ -17,7 +17,16 @@ Student - Login
                 <label for="pass">Password</label>
                 <input type="password" name="pass" id="pass" required>
             </div>
-
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            {% for msg in messages %}
+            <div class="msgdiv">
+                <h4 style="text-align: left;">{{msg}}</h4>
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+            
             <div class="box-btn">
                 <button class="sub" type="submit"><span>Register</span></button>
             </div>

@@ -1,7 +1,7 @@
 from flask import Flask,render_template,request,redirect,url_for,session,flash
 from flask_sqlalchemy import SQLAlchemy
 from random import randrange
-from email_utils import send_email,send_pass
+from email_utils import send_email,send_pass,send_login_info
 app = Flask(__name__)
 
 app.secret_key = "secret123"
@@ -90,12 +90,12 @@ def otp():
         if otp == userOtp:
             print("OTP Correct!")
             password = str(randrange(11111111,99999999))
-            s1 = Student(en=en,name=name,gmail=gmail,sem=sem,div=div,password=password)
-            db.session.add(s1)
-            db.session.commit()
+            # s1 = Student(en=en,name=name,gmail=gmail,sem=sem,div=div,password=password)
+            # db.session.add(s1)
+            # db.session.commit()
             send_pass(gmail,password)
 
-            return redirect(url_for("studentHome"))
+            return redirect(url_for("studentLogin"))
         else:
             print("OTP Incorrect")
             flash("Otp Incorrect")
@@ -104,6 +104,20 @@ def otp():
 @app.route("/student/login")
 def studentLogin():
     return render_template("student-login.html")
+
+@app.route("/student/login/submit",methods=["POST"])
+def stdLoginSubmit():
+    en1 = int(request.form.get("en"))
+    pass1 = request.form.get("pass")
+
+    s1 = Student.query.filter_by(en=en1).first()
+    if pass1 == s1.password:
+        send_login_info(s1.gmail)
+        return redirect(url_for("studentHome"))
+    else:
+        flash("Enrollment Or Password Is Incorrect")
+        print("Enrollment Or Password Is Incorrect")
+        return redirect(url_for("studentLogin"))
 
 if __name__ == "__main__":
     with app.app_context():
