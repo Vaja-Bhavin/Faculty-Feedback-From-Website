@@ -1,27 +1,23 @@
 {% extends 'base.html' %}
-
 {% block title %}
-OTP
+Student - Login
 {% endblock %}
 
 {% block content %}
 <link rel="stylesheet" href="{{ url_for('static',filename='css/student-register.css' ) }}">
 <div class="box-1">
     <div class="box-2">
-        <h2>OTP</h2>
-        <form action="" method="POST">
+        <h2>Login</h2>
+        <form action="/student/login/submit" method="POST">
             <div class="box-inp">
-                <input type="number" name="otp" id="otp" required placeholder="OTP">
+                <label for="en">Enrollment No:</label>
+                <input type="number" name="en" id="en" required>
             </div>
-            {% with messages = get_flashed_messages() %}
-                {% if messages %}
-                {% for msg in messages %}
-            <div class="msgdiv">
-                <h4 style="text-align: left;">{{msg}}</h4>
+            <div class="box-inp">
+                <label for="pass">Password</label>
+                <input type="password" name="pass" id="pass" required>
             </div>
-                {% endfor %}
-                {% endif %}
-            {% endwith %}
+
             <div class="box-btn">
                 <button class="sub" type="submit"><span>Register</span></button>
             </div>

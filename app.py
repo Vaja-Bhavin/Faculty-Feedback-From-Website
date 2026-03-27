@@ -1,7 +1,7 @@
-from flask import Flask,render_template,request,redirect,url_for,session
+from flask import Flask,render_template,request,redirect,url_for,session,flash
 from flask_sqlalchemy import SQLAlchemy
 from random import randrange
-from email_utils import send_email
+from email_utils import send_email,send_pass
 app = Flask(__name__)
 
 app.secret_key = "secret123"
@@ -17,6 +17,7 @@ class Student(db.Model):
     gmail = db.Column(db.String(50))
     sem = db.Column(db.Integer)
     div = db.Column(db.String(1))
+    password = db.Column(db.String(8))
 
 @app.route("/")
 def home():
@@ -49,9 +50,6 @@ def stdRegisterSubmit():
     gmail = request.form.get("gmail")
     sem = request.form.get("sem")
     div = request.form.get("div")
-    # s1 = Student(en=en,name=name,gmail=gmail,sem=sem,div=div)
-    # db.session.add(s1)
-    # db.session.commit()
     # print("En:",en)
     # print("Name:",name)
     # print("Gmail:",gmail)
@@ -70,13 +68,13 @@ def stdRegisterSubmit():
 
 @app.route("/otp", methods=["GET", "POST"])
 def otp():
+    en = session.get("en")
+    name = session.get("name")
+    gmail = session.get("gmail")
+    sem = session.get("sem")
+    div = session.get("div")
+    otp = session.get("otp")
     if request.method == "GET":
-        en = session.get("en")
-        name = session.get("name")
-        gmail = session.get("gmail")
-        sem = session.get("sem")
-        div = session.get("div")
-        otp = session.get("otp")
         
         # print("En:",en)
         # print("Name:",name)
@@ -91,12 +89,21 @@ def otp():
         userOtp = int(userOtp)
         if otp == userOtp:
             print("OTP Correct!")
+            password = str(randrange(11111111,99999999))
+            s1 = Student(en=en,name=name,gmail=gmail,sem=sem,div=div,password=password)
+            db.session.add(s1)
+            db.session.commit()
+            send_pass(gmail,password)
+
             return redirect(url_for("studentHome"))
         else:
             print("OTP Incorrect")
-            msg = "OTP Incorrect!"
-            session["alert"] = msg
+            flash("Otp Incorrect")
             return redirect(url_for("otp"))
+        
+@app.route("/student/login")
+def studentLogin():
+    return render_template("student-login.html")
 
 if __name__ == "__main__":
     with app.app_context():
