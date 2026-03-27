@@ -1,7 +1,7 @@
 from flask import Flask,render_template,request,redirect,url_for,session
 from flask_sqlalchemy import SQLAlchemy
 from random import randrange
-
+from email_utils import send_email
 app = Flask(__name__)
 
 app.secret_key = "secret123"
@@ -62,25 +62,41 @@ def stdRegisterSubmit():
     session["gmail"] = gmail
     session["sem"] = sem
     session["div"] = div
-    session["otp"] = randrange(1000,9999)
+    otptemp = randrange(1000,9999)
+    session["otp"] = otptemp
+    session["alert"] = ""
+    send_email(gmail,otptemp)
     return redirect(url_for("otp"))
 
-@app.route("/otp")
+@app.route("/otp", methods=["GET", "POST"])
 def otp():
-    en = session.get("en")
-    name = session.get("name")
-    gmail = session.get("gmail")
-    sem = session.get("sem")
-    div = session.get("div")
-    otp = session.get("otp")
-    
-    print("En:",en)
-    print("Name:",name)
-    print("Gmail:",gmail)
-    print("Sem:",sem)
-    print("Div:",div)
-    print("OTP:",otp)
-    return render_template("otp.html")
+    if request.method == "GET":
+        en = session.get("en")
+        name = session.get("name")
+        gmail = session.get("gmail")
+        sem = session.get("sem")
+        div = session.get("div")
+        otp = session.get("otp")
+        
+        # print("En:",en)
+        # print("Name:",name)
+        # print("Gmail:",gmail)
+        # print("Sem:",sem)
+        # print("Div:",div)
+        print("OTP:",otp)
+        return render_template("verify-otp.html")
+    if request.method == "POST":
+        otp = session.get("otp")
+        userOtp = request.form.get("otp")
+        userOtp = int(userOtp)
+        if otp == userOtp:
+            print("OTP Correct!")
+            return redirect(url_for("studentHome"))
+        else:
+            print("OTP Incorrect")
+            msg = "OTP Incorrect!"
+            session["alert"] = msg
+            return redirect(url_for("otp"))
 
 if __name__ == "__main__":
     with app.app_context():

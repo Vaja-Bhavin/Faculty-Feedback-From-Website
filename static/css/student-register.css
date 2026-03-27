@@ -45,6 +45,15 @@ input {
     padding-left: 4px;
 }
 
+.msgdiv {
+    box-sizing: border-box;
+    margin-left: 5px;
+    max-width: 400px;
+    min-width: 200px;
+    width: 400px;
+    color: red;
+}
+
 .box-btn {
     display: flex;
     justify-content: center;
@@ -82,7 +91,7 @@ input {
 @media screen and (max-width:480px) {
 
     .box-inp input,
-    select {
+    select,.msgdiv {
         width: 300px;
     }
 
