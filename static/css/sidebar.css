@@ -38,6 +38,7 @@
 
 .box-t>h3 {
     background: linear-gradient(to right, rgb(72, 0, 255), rgb(129, 30, 196));
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-size: 23px;

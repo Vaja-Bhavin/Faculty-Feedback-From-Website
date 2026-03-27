@@ -1,7 +1,10 @@
-from flask import Flask,render_template,request
+from flask import Flask,render_template,request,redirect,url_for,session
 from flask_sqlalchemy import SQLAlchemy
+from random import randrange
 
 app = Flask(__name__)
+
+app.secret_key = "secret123"
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///mydatabase.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -46,15 +49,38 @@ def stdRegisterSubmit():
     gmail = request.form.get("gmail")
     sem = request.form.get("sem")
     div = request.form.get("div")
-    s1 = Student(en=en,name=name,gmail=gmail,sem=sem,div=div)
-    db.session.add(s1)
-    db.session.commit()
+    # s1 = Student(en=en,name=name,gmail=gmail,sem=sem,div=div)
+    # db.session.add(s1)
+    # db.session.commit()
+    # print("En:",en)
+    # print("Name:",name)
+    # print("Gmail:",gmail)
+    # print("Sem:",sem)
+    # print("Div:",div)
+    session["en"] = en
+    session["name"] = name
+    session["gmail"] = gmail
+    session["sem"] = sem
+    session["div"] = div
+    session["otp"] = randrange(1000,9999)
+    return redirect(url_for("otp"))
+
+@app.route("/otp")
+def otp():
+    en = session.get("en")
+    name = session.get("name")
+    gmail = session.get("gmail")
+    sem = session.get("sem")
+    div = session.get("div")
+    otp = session.get("otp")
+    
     print("En:",en)
     print("Name:",name)
     print("Gmail:",gmail)
     print("Sem:",sem)
     print("Div:",div)
-    return render_template("student.html")
+    print("OTP:",otp)
+    return render_template("otp.html")
 
 if __name__ == "__main__":
     with app.app_context():
