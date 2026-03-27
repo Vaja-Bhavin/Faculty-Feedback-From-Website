@@ -40,6 +40,11 @@ select {
     border-radius: 15px;
 }
 
+input {
+    box-sizing: border-box;
+    padding-left: 4px;
+}
+
 .box-btn {
     display: flex;
     justify-content: center;
