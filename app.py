@@ -90,9 +90,9 @@ def otp():
         if otp == userOtp:
             print("OTP Correct!")
             password = str(randrange(11111111,99999999))
-            # s1 = Student(en=en,name=name,gmail=gmail,sem=sem,div=div,password=password)
-            # db.session.add(s1)
-            # db.session.commit()
+            s1 = Student(en=en,name=name,gmail=gmail,sem=sem,div=div,password=password)
+            db.session.add(s1)
+            db.session.commit()
             send_pass(gmail,password)
 
             return redirect(url_for("studentLogin"))
