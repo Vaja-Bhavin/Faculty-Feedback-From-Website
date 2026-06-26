@@ -1,28 +1,24 @@
-from flask import blueprints,app,render_template,request,session,redirect,flash,url_for
+from flask import Blueprint,app,render_template,request,session,redirect,flash,url_for
 from models import Student
 from extensions import db
 from email_utils import send_email,send_pass,send_login_info
 from random import randrange
 
-student = blueprints("student",__name__)
+student = Blueprint("student",__name__)
 
-@app.route("/student/home")
+@student.route("/student/home")
 def studentHome():
     return render_template("student.html")
 
-@app.route("/student/givefeedback")
+@student.route("/student/givefeedback")
 def givefeedback():
     return render_template("givefd.html")
 
-@app.route("/faculty/home")
-def facultyHome():
-    return render_template("faculty.html")
-
-@app.route("/student/register")
+@student.route("/student/register")
 def studentRegister():
     return render_template("student-register.html")
 
-@app.route("/student/register/submit",methods=["POST"])
+@student.route("/student/register/submit",methods=["POST"])
 def stdRegisterSubmit():
     en = request.form.get("en")
     name = request.form.get("name")
@@ -45,7 +41,7 @@ def stdRegisterSubmit():
     send_email(gmail,otptemp)
     return redirect(url_for("otp"))
 
-@app.route("/otp", methods=["GET", "POST"])
+@student.route("/otp", methods=["GET", "POST"])
 def otp():
     en = session.get("en")
     name = session.get("name")
@@ -74,17 +70,17 @@ def otp():
             db.session.commit()
             send_pass(gmail,password)
 
-            return redirect(url_for("studentLogin"))
+            return redirect(url_for("student.studentLogin"))
         else:
             print("OTP Incorrect")
             flash("Otp Incorrect")
             return redirect(url_for("otp"))
         
-@app.route("/student/login")
+@student.route("/student/login")
 def studentLogin():
     return render_template("student-login.html")
 
-@app.route("/student/login/submit",methods=["POST"])
+@student.route("/student/login/submit",methods=["POST"])
 def stdLoginSubmit():
     en1 = int(request.form.get("en"))
     pass1 = request.form.get("pass")
@@ -92,8 +88,9 @@ def stdLoginSubmit():
     s1 = Student.query.filter_by(en=en1).first()
     if pass1 == s1.password:
         send_login_info(s1.gmail)
-        return redirect(url_for("studentHome"))
+        flash("Login successful!")
+        return redirect(url_for("student.studentHome"))
     else:
         flash("Enrollment Or Password Is Incorrect")
         print("Enrollment Or Password Is Incorrect")
-        return redirect(url_for("studentLogin"))
+        return redirect(url_for("student.studentLogin"))

@@ -1,10 +1,10 @@
 from flask import Flask,render_template,request,redirect,url_for,session,flash
 from extensions import db
-from models import Student
 
 import os
-from email_utils import send_email,send_pass,send_login_info
 from dotenv import load_dotenv
+from routes.student import student
+from routes.faculty import faculty
 
 load_dotenv()
 app = Flask(__name__)
@@ -24,6 +24,10 @@ def home():
 @app.route("/about")
 def about():
     return render_template("about.html")
+
+
+app.register_blueprint(student)
+app.register_blueprint(faculty)
 
 if __name__ == "__main__":
     with app.app_context():
