@@ -3,3 +3,4 @@ numpy
 matplotlib
 flask
 flask_sqlalchemy
+dotenv
