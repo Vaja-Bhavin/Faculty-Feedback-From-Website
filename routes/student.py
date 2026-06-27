@@ -8,7 +8,13 @@ student = Blueprint("student",__name__)
 
 @student.route("/student/home")
 def studentHome():
-    return render_template("student.html")
+
+    if "student_en" not in session:
+        return redirect(url_for("student.studentLogin"))
+
+    s1 = Student.query.get(session["student_en"])
+    return render_template("student.html", s1=s1)
+
 
 @student.route("/student/givefeedback")
 def givefeedback():
@@ -30,25 +36,43 @@ def stdRegisterSubmit():
     # print("Gmail:",gmail)
     # print("Sem:",sem)
     # print("Div:",div)
-    session["en"] = en
-    session["name"] = name
-    session["gmail"] = gmail
-    session["sem"] = sem
-    session["div"] = div
     otptemp = randrange(1000,9999)
-    session["otp"] = otptemp
-    session["alert"] = ""
+
+    session["registration"] = {
+    "en": en,
+    "name": name,
+    "gmail": gmail,
+    "sem": sem,
+    "div": div,
+    "otp":otptemp,
+    "alert":""
+}
+    # session["en"] = en
+    # session["name"] = name
+    # session["gmail"] = gmail
+    # session["sem"] = sem
+    # session["div"] = div
+    # session["otp"] = otptemp
+    # session["alert"] = ""
     send_email(gmail,otptemp)
     return redirect(url_for("otp"))
 
 @student.route("/otp", methods=["GET", "POST"])
 def otp():
-    en = session.get("en")
-    name = session.get("name")
-    gmail = session.get("gmail")
-    sem = session.get("sem")
-    div = session.get("div")
-    otp = session.get("otp")
+    data = session.get("registration")
+    # en = session.get("en")
+    # name = session.get("name")
+    # gmail = session.get("gmail")
+    # sem = session.get("sem")
+    # div = session.get("div")
+    # otp = session.get("otp")
+
+    en=data["en"],
+    name=data["name"],
+    gmail=data["gmail"],
+    sem=data["sem"],
+    div=data["div"],
+    otp = data["otp"]
     if request.method == "GET":
         
         # print("En:",en)
@@ -59,7 +83,6 @@ def otp():
         print("OTP:",otp)
         return render_template("verify-otp.html")
     if request.method == "POST":
-        otp = session.get("otp")
         userOtp = request.form.get("otp")
         userOtp = int(userOtp)
         if otp == userOtp:
@@ -68,6 +91,7 @@ def otp():
             s1 = Student(en=en,name=name,gmail=gmail,sem=sem,div=div,password=password)
             db.session.add(s1)
             db.session.commit()
+            session.pop("registration", None)
             send_pass(gmail,password)
 
             return redirect(url_for("student.studentLogin"))
@@ -86,7 +110,8 @@ def stdLoginSubmit():
     pass1 = request.form.get("pass")
 
     s1 = Student.query.filter_by(en=en1).first()
-    if pass1 == s1.password:
+    if s1 and pass1 == s1.password:
+        session["student_en"] = s1.en
         send_login_info(s1.gmail)
         flash("Login successful!")
         return redirect(url_for("student.studentHome"))

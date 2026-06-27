@@ -5,6 +5,7 @@ import os
 from dotenv import load_dotenv
 from routes.student import student
 from routes.faculty import faculty
+from datetime import timedelta
 
 load_dotenv()
 app = Flask(__name__)
@@ -13,6 +14,9 @@ app.secret_key = os.getenv("SECRET_KEY")
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///mydatabase.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+
+app.permanent_session_lifetime = timedelta(days=7)
 
 db.init_app(app)
 

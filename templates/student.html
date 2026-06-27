@@ -6,7 +6,7 @@ Student
 {% endblock %}
 
 {% block content %}
-{% with messages = get_flashed_messages() %}
+<!-- {% with messages = get_flashed_messages() %}
     {% if messages %}
     {% for message in messages %}
             <script>
@@ -14,5 +14,16 @@ Student
             </script>
         {% endfor %}
     {% endif %}
-{% endwith %}
+{% endwith %} -->
+<main>
+    <div class="info">
+        <h2 class="t1">Student Information</h2>
+        <div class="info-1">
+            <h3>Enrollment No.: {{s1.en}}</h3>
+            <h3>Name: {{s1.name}}</h3>
+            <h3>Sem: {{s1.sem}}</h3>
+            <h3>Div: {{s1.div}}</h3>
+        </div>
+    </div>
+</main>
 {% endblock %}
