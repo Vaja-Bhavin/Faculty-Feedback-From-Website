@@ -11,7 +11,7 @@ def studentHome():
 
     if "student_en" not in session:
         return redirect(url_for("student.studentLogin"))
-
+    
     s1 = Student.query.get(session["student_en"])
     return render_template("student.html", s1=s1)
 
@@ -113,6 +113,7 @@ def stdLoginSubmit():
     if s1 and pass1 == s1.password:
         session["student_en"] = s1.en
         send_login_info(s1.gmail)
+        session.permanent = True
         flash("Login successful!")
         return redirect(url_for("student.studentHome"))
     else:

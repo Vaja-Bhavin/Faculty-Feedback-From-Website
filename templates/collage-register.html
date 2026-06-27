@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Collage Register
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static',filename='css/collage-register.css') }}">
+<div class="box-1">
+    <div class="container">
+        <h1 class="title-1">College Registration Guide</h1>
+        <p class="subtitle"> Register your college to start using the Faculty Feedback System. </p>
+        <div class="step">
+            <h2>Step 1 - Send Registration Request</h2>
+            <p> Send an email to: </p> <a href="mailto:vajabhavin96@gmail.com" class="email"> vajabhavin96@gmail.com
+            </a>
+            <br><br>
+            <p>Please include the following details:</p>
+            <ul class="info">
+                <li>College Name</li>
+                <li>College ID / Institute Code</li>
+                <li>Principal or Authorized Person Name</li>
+                <li>Official College Email Address</li>
+                <li>Contact Number</li>
+                <li>Complete College Address</li>
+                <li>University / Board Affiliation</li>
+                <li>Official Website (if available)</li>
+                <li>Number of Departments (Optional)</li>
+                <li>Any additional information for verification</li>
+            </ul>
+        </div>
+        <div class="step">
+            <h2>Step 2 - Verification</h2>
+            <p> After receiving your request, we will verify the submitted information. If additional details are
+                required,
+                we will contact you through your registered email or phone number. </p>
+        </div>
+        <div class="step">
+            <h2>Step 3 - Approval</h2>
+            <p> Once verification is successful, your college will be added to the Faculty Feedback System. </p>
+            <ul>
+                <li>College account will be activated.</li>
+                <li>Faculty registration will be enabled.</li>
+                <li>You will receive a confirmation email.</li>
+            </ul>
+        </div>
+        <div class="step">
+            <h2>Step 4 - Login</h2>
+            <p> After approval, log in using your registered credentials and start managing your institution. </p>
+            <ul>
+                <li>Manage Faculty</li>
+                <li>Allow Faculty Registration</li>
+                <li>Allow Student Feedback</li>
+                <li>View Feedback Reports</li>
+            </ul>
+        </div>
+        <div class="note"> <strong>Note:</strong> Only verified educational institutions are approved. Registration
+            requests
+            with incomplete or invalid information may be rejected. </div>
+    </div>
+</div>
+{% endblock %}

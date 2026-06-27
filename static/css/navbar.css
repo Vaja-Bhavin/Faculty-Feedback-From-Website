@@ -18,6 +18,7 @@ nav {
     box-shadow: 3px 3px 8px white;
     position: fixed;
     top: 0;
+    box-shadow: 0 0 15px rgb(153, 52, 183);
 }
 
 .navul {
@@ -35,13 +36,13 @@ nav {
     height: 7vh;
 }
 
-.ab_link {
+.ab_link,.logout {
     color: white;
     font-weight: normal;
     text-decoration: none;
 }
 
-.ab_link:hover {
+.ab_link:hover,.logout:hover {
     text-decoration: underline;
     font-size: 16.3px;
 }
@@ -69,7 +70,8 @@ nav {
 @media (max-width: 768px) {
 
     .title,
-    .ab_link {
+    .ab_link,
+    .logout {
         font-size: 25px;
     }
 
@@ -84,11 +86,11 @@ nav {
         font-size: 18px;
     }
 
-    .ab_link:hover {
+    .ab_link:hover,.logout:hover {
         font-size: 18.5px;
     }
 
-    .ab_link {
+    .ab_link,.logout {
         display: none;
     }
 

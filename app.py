@@ -5,6 +5,7 @@ import os
 from dotenv import load_dotenv
 from routes.student import student
 from routes.faculty import faculty
+from routes.collage import collage
 from datetime import timedelta
 
 load_dotenv()
@@ -29,9 +30,14 @@ def home():
 def about():
     return render_template("about.html")
 
+@app.route("/logout")
+def logout():
+    session.clear()
+    return redirect(url_for("home"))
 
 app.register_blueprint(student)
 app.register_blueprint(faculty)
+app.register_blueprint(collage)
 
 if __name__ == "__main__":
     with app.app_context():
