@@ -3,5 +3,3 @@ numpy
 matplotlib
 flask
 flask_sqlalchemy
-json
-pickle
