@@ -2,5 +2,7 @@ pandas
 numpy
 matplotlib
 flask
+gunicorn
 flask_sqlalchemy
 dotenv
+gunicorn
