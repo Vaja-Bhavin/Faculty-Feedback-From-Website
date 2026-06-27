@@ -11,6 +11,18 @@
 }
 .t1 {
     text-align: center;
+    /* background: linear-gradient(to right, rgb(72, 0, 255), rgb(129, 30, 196));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; */
+}
+
+.forms {
+    padding-top: 20px;
+}
+
+.forms > h2 {
+    text-align: center;
     background: linear-gradient(to right, rgb(72, 0, 255), rgb(129, 30, 196));
     background-clip: text;
     -webkit-background-clip: text;
