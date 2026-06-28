@@ -13,7 +13,7 @@ app = Flask(__name__)
 
 app.secret_key = os.getenv("SECRET_KEY")
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///mydatabase.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DB_URI")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 
@@ -21,6 +21,12 @@ app.permanent_session_lifetime = timedelta(days=7)
 
 db.init_app(app)
 
+@app.after_request
+def add_header(response):
+    response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, max-age=0"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = "0"
+    return response
 
 @app.route("/")
 def home():
@@ -44,8 +50,10 @@ if __name__ == "__main__":
     with app.app_context():
         db.create_all()
 
-    app.run(
-        host="0.0.0.0",
-        port=int(os.environ.get("PORT", 5000)),
-        debug=True
-    )
+    # app.run(
+    #     host="0.0.0.0",
+    #     port=int(os.environ.get("PORT", 5000)),
+    #     debug=True
+    # )
+
+    app.run(debug=True)

@@ -1,7 +1,9 @@
 .info {
     padding: 20px;
-    border-bottom: 1.5px solid black;
-    box-shadow: 0px 3px 5px black;
+    box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.12);
+    margin: 10px;
+    border-radius: 15px;
+    background-color: #f5f7fb;
 }
 .info-1 {
     display: flex;
@@ -9,6 +11,24 @@
     gap: 15px;
     margin-top: 10px;
 }
+
+.box-logout {
+    display: flex;
+    margin-top: 10px;
+    align-self: center;
+    justify-content: right;
+}
+
+.lo>h4 {
+    display: inline;
+    font-size: 19px;
+}
+
+.lo>h4:hover {
+    font-size: 19px;
+    text-shadow: 1px 1px 1px black;
+}
+
 .t1 {
     text-align: center;
     /* background: linear-gradient(to right, rgb(72, 0, 255), rgb(129, 30, 196));
@@ -21,7 +41,7 @@
     padding-top: 20px;
 }
 
-.forms > h2 {
+.forms>h2 {
     text-align: center;
     background: linear-gradient(to right, rgb(72, 0, 255), rgb(129, 30, 196));
     background-clip: text;
