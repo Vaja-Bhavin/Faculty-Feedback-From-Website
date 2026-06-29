@@ -2,8 +2,9 @@
     padding: 20px;
     box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.12);
     margin: 10px;
+    margin-top: 20px;
     border-radius: 15px;
-    background-color: #f5f7fb;
+    background-color: #fff;
 }
 .info-1 {
     display: flex;
@@ -11,7 +12,9 @@
     gap: 15px;
     margin-top: 10px;
 }
-
+body {
+    background-color:#f5f7fb ;
+}
 .box-logout {
     display: flex;
     margin-top: 10px;

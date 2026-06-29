@@ -1,5 +1,6 @@
 from flask import Flask,render_template,request,redirect,url_for,session,flash
 from extensions import db
+from models import Student
 
 import os
 from dotenv import load_dotenv
@@ -30,7 +31,13 @@ def add_header(response):
 
 @app.route("/")
 def home():
-    return render_template("home.html")
+
+    if "student_en" not in session:
+        return render_template("home.html")
+        
+    s1 = Student.query.get(session["student_en"])
+    return redirect(url_for("student.studentHome"))
+    # return render_template("home.html")
 
 @app.route("/about")
 def about():
@@ -50,10 +57,10 @@ if __name__ == "__main__":
     with app.app_context():
         db.create_all()
 
-    # app.run(
-    #     host="0.0.0.0",
-    #     port=int(os.environ.get("PORT", 5000)),
-    #     debug=True
-    # )
+    app.run(
+        host="0.0.0.0",
+        port=int(os.environ.get("PORT", 5000)),
+        debug=True
+    )
 
-    app.run(debug=True)
+    # app.run(debug=True)
