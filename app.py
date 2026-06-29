@@ -1,6 +1,7 @@
 from flask import Flask,render_template,request,redirect,url_for,session,flash
 from extensions import db
 from models import Student
+from flask_sqlalchemy import SQLAlchemy
 
 import os
 from dotenv import load_dotenv
@@ -14,8 +15,15 @@ app = Flask(__name__)
 
 app.secret_key = os.getenv("SECRET_KEY")
 
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DB_URI")
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+# app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DB_URI")
+# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+app.config["SQLALCHEMY_DATABASE_URI"] = (
+    os.environ.get("DB_URL")
+    or "sqlite:///users.db"
+)
+
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 
 app.permanent_session_lifetime = timedelta(days=7)
