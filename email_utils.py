@@ -2,6 +2,7 @@ import smtplib
 from email.mime.text import MIMEText
 import os
 from dotenv import load_dotenv
+import ssl
 
 load_dotenv()
 
@@ -20,8 +21,19 @@ def send_email(to_email, otp):
     msg["From"] = sender_email
     msg["To"] = to_email
 
-    server = smtplib.SMTP("smtp.gmail.com", 587)
-    server.starttls()
+    # server = smtplib.SMTP("smtp.gmail.com", 587)
+    # server.starttls()
+
+    import ssl
+
+    context = ssl.create_default_context()
+
+    server = smtplib.SMTP_SSL(
+        "smtp.gmail.com",
+        465,
+        context=context
+    )
+    
     server.login(sender_email, app_password)
     server.send_message(msg)
     server.quit()
@@ -36,8 +48,17 @@ def send_pass(to_email, passtemp):
     msg["From"] = sender_email
     msg["To"] = to_email
 
-    server = smtplib.SMTP("smtp.gmail.com", 587)
-    server.starttls()
+    # server = smtplib.SMTP("smtp.gmail.com", 587)
+    # server.starttls()
+
+    context = ssl.create_default_context()
+
+    server = smtplib.SMTP_SSL(
+        "smtp.gmail.com",
+        465,
+        context=context
+    )
+
     server.login(sender_email, app_password)
     server.send_message(msg)
     server.quit()
