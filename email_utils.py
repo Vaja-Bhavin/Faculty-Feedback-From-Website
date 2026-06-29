@@ -4,6 +4,10 @@ import os
 from dotenv import load_dotenv
 import ssl
 
+import socket
+
+print(socket.getaddrinfo("smtp.gmail.com", 587))
+
 load_dotenv()
 
 sender_email = os.getenv("EMAIL")
