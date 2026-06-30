@@ -1,0 +1,61 @@
+{% extends 'base/base.html' %}
+
+{% block title %}
+    Add Collage
+{% endblock %}
+
+{% block content %}
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/add-collage.css' ) }}">
+<div class="box-1">
+    <div class="box-2">
+        <h2>Add Collage</h2>
+    <form action="/admin/addcollage/submit" method="POST">
+
+        <div class="box-inp">
+            <label for="cc">Collage Code:</label>
+            <input type="number" name="cc" id="cc" required>
+        </div>
+
+        <div class="box-inp">
+            <label for="name">Name:</label>
+            <input type="text" name="name" id="name" required>
+        </div>
+
+        <div class="box-inp">
+            <label for="mail">Gmail:</label>
+            <input type="email" name="gmail" id="gmail" required>
+        </div>
+
+        <div class="box-inp">
+            <label for="cn">Contact No:</label>
+            <input type="number" name="cn" id="cn" required>
+        </div>
+
+        <div class="box-inp">
+            <label for="addr">Div:</label>
+            <textarea name="adde" id="addr" cols="52" rows="7"></textarea>
+        </div>
+
+        <div class="box-inp">
+            <label for="uni">University:</label>
+            <input type="text" name="uni" id="uni" required>
+        </div>
+
+        <div class="box-inp">
+            <label for="web">Website:</label>
+            <input type="url" name="web" id="web" required>
+        </div>
+
+        <div class="box-inp">
+            <label for="pass">Password:</label>
+            <input type="password" name="pass" id="pass" required>
+        </div>
+
+        <div class="box-btn">
+            <button class="sub" type="submit"><span>Add</span></button>
+        </div>
+    </form>
+    </div>
+    <div style="height: 30%;"></div>
+</div>
+{% endblock %}

@@ -24,6 +24,4 @@ class Collage(db.Model):
 
     password = db.Column(db.String(255), nullable=True)
 
-    verified = db.Column(db.Boolean, default=False)
-
     created_at = db.Column(db.DateTime, default=db.func.current_timestamp())

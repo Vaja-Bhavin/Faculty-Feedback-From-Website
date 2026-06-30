@@ -5,6 +5,6 @@ faculty = Blueprint("faculty",__name__)
 
 @faculty.route("/faculty/home")
 def facultyHome():
-    return render_template("faculty.html")
+    return render_template("faculty/faculty.html")
 
 # @faculty.route("/faculty/login")

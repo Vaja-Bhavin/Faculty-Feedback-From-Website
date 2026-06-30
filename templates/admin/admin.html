@@ -1,0 +1,18 @@
+{% extends 'base/base.html' %}
+
+{% block title %}
+    Admin Dashboard
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static',filename='css/admin.css' ) }}">
+<main>
+    <div class="header">
+        <h2>Operations</h2>
+    </div>
+    <div class="box-operations">
+        <div class="operations"><a href="/admin/addcollage"><h4>Add Collage</h4></a></div>
+        <div class="operations"><a href=""><h4>Remove Collage</h4></a></div>
+    </div>
+</main>
+{% endblock %}

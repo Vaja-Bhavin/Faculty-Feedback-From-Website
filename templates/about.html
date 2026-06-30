@@ -1,9 +1,125 @@
 <link rel="stylesheet" href="{{ url_for('static',filename='css/about.css' ) }}">
-{% extends 'base.html' %}
+{% extends 'base/base.html' %}
 
 {% block title %}
 About Us
 {% endblock %}
 {% block content %}
-    About Us
+<section class="about-section">
+    <div class="container">
+
+        <div class="section-title">
+            <h1>About Us</h1>
+            <p>
+                A modern Faculty Feedback System designed to simplify feedback
+                collection, improve teaching quality, and help educational
+                institutions make data-driven decisions.
+            </p>
+        </div>
+
+        <div class="about-card">
+            <h2>Who We Are</h2>
+            <p>
+                Our Faculty Feedback System is an online platform developed to
+                provide colleges and universities with a secure, efficient, and
+                transparent way to collect and analyze student feedback. The
+                system eliminates paper-based feedback forms and automates the
+                entire feedback process from registration to report generation.
+            </p>
+        </div>
+
+        <div class="about-grid">
+
+            <div class="card">
+                <i class="fa-solid fa-building-columns"></i>
+                <h3>For Colleges</h3>
+                <p>
+                    Colleges can securely manage departments, faculty members,
+                    and students while monitoring feedback through a centralized
+                    dashboard.
+                </p>
+            </div>
+
+            <div class="card">
+                <i class="fa-solid fa-user-graduate"></i>
+                <h3>For Students</h3>
+                <p>
+                    Students can easily submit honest and confidential feedback
+                    using a simple and user-friendly interface.
+                </p>
+            </div>
+
+            <div class="card">
+                <i class="fa-solid fa-chalkboard-user"></i>
+                <h3>For Faculty</h3>
+                <p>
+                    Faculty members can access feedback reports to understand
+                    their strengths, identify improvement areas, and enhance
+                    the overall learning experience.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="about-card">
+            <h2>Our Mission</h2>
+            <p>
+                To provide educational institutions with a reliable digital
+                platform that encourages constructive feedback, supports
+                continuous improvement in teaching quality, and promotes better
+                communication between students and faculty.
+            </p>
+        </div>
+
+        <div class="about-card">
+            <h2>Why Choose Our System?</h2>
+
+            <div class="features">
+
+                <div class="feature">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <span>Secure Authentication</span>
+                </div>
+
+                <div class="feature">
+                    <i class="fa-solid fa-envelope-circle-check"></i>
+                    <span>Email OTP Verification</span>
+                </div>
+
+                <div class="feature">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Real-Time Feedback Analysis</span>
+                </div>
+
+                <div class="feature">
+                    <i class="fa-solid fa-file-lines"></i>
+                    <span>Detailed Reports</span>
+                </div>
+
+                <div class="feature">
+                    <i class="fa-solid fa-users"></i>
+                    <span>Multi-College Support</span>
+                </div>
+
+                <div class="feature">
+                    <i class="fa-solid fa-mobile-screen-button"></i>
+                    <span>Responsive Design</span>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="about-card">
+            <h2>Our Vision</h2>
+            <p>
+                We aim to become a trusted feedback management platform for
+                educational institutions by delivering secure, scalable, and
+                easy-to-use solutions that support academic excellence and
+                continuous institutional growth.
+            </p>
+        </div>
+
+    </div>
+</section>
+
 {% endblock %}

@@ -13,16 +13,16 @@ def studentHome():
         return redirect(url_for("student.studentLogin"))
     
     s1 = Student.query.get(session["student_en"])
-    return render_template("student.html", s1=s1)
+    return render_template("student/student.html", s1=s1)
 
 
 @student.route("/student/givefeedback")
 def givefeedback():
-    return render_template("givefd.html")
+    return render_template("student/givefd.html")
 
 @student.route("/student/register")
 def studentRegister():
-    return render_template("student-register.html")
+    return render_template("student/student-register.html")
 
 @student.route("/student/register/submit",methods=["POST"])
 def stdRegisterSubmit():
@@ -81,7 +81,7 @@ def otp():
         # print("Sem:",sem)
         # print("Div:",div)
         print("OTP:",otp)
-        return render_template("verify-otp.html")
+        return render_template("student/verify-otp.html")
     if request.method == "POST":
         userOtp = request.form.get("otp")
         userOtp = int(userOtp)
@@ -98,11 +98,11 @@ def otp():
         else:
             print("OTP Incorrect")
             flash("Otp Incorrect")
-            return redirect(url_for("otp"))
+            return redirect(url_for("student.otp"))
         
 @student.route("/student/login")
 def studentLogin():
-    return render_template("student-login.html")
+    return render_template("student/student-login.html")
 
 @student.route("/student/login/submit",methods=["POST"])
 def stdLoginSubmit():

@@ -13,9 +13,9 @@
 <link rel="shortcut icon" href="{{ url_for('static',filename='image/logo1.svg' ) }}" type="image/x-icon">
 </head>
 <body>
-    {% include 'sidebar.html'   %}
+    {% include 'base/sidebar.html'%}
     <header>
-        {% include 'navbar.html'   %}
+        {% include 'base/navbar.html'%}
     </header>
 
     {% block content %}
