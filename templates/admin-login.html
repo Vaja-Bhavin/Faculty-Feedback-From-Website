@@ -1,18 +1,14 @@
 {% extends 'base.html' %}
 {% block title %}
-Student - Login
+Admin - Login
 {% endblock %}
 
 {% block content %}
 <link rel="stylesheet" href="{{ url_for('static',filename='css/student-register.css' ) }}">
 <div class="box-1">
     <div class="box-2">
-        <h2>Login</h2>
-        <form action="/student/login/submit" method="POST">
-            <div class="box-inp">
-                <label for="en">Enrollment No:</label>
-                <input type="number" name="en" id="en" required>
-            </div>
+        <h2>Admin - Login</h2>
+        <form action="/admin/login" method="POST">
             <div class="box-inp">
                 <label for="pass">Password</label>
                 <input type="password" name="pass" id="pass" required>
