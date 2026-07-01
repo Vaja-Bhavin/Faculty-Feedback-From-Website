@@ -1,0 +1,38 @@
+{% extends 'base/base.html' %}
+{% block title %}
+Collage - Login
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static',filename='css/student-register.css' ) }}">
+<div class="box-1">
+    <div class="box-2">
+        <h2>Login</h2>
+        <form action="" method="POST">
+            <div class="box-inp">
+                <label for="en">Collage Code:</label>
+                <input type="number" name="en" id="en" required>
+            </div>
+            <div class="box-inp">
+                <label for="pass">Password</label>
+                <input type="password" name="pass" id="pass" required>
+            </div>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            {% for msg in messages %}
+            <div class="msgdiv">
+                <h4 style="text-align: left;">{{msg}}</h4>
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+            
+            <div class="box-btn">
+                <button class="sub" type="submit"><span>Login</span></button>
+            </div>
+            <div class="fp"><a href="">Forget Password?</a></div>
+        </form>
+
+    </div>
+</div>
+{% endblock %}

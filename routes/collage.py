@@ -9,3 +9,7 @@ def clgHome():
 @collage.route("/collage/register")
 def clgRegister():
     return render_template("collage/collage-register.html")
+
+@collage.route("/collage/login")
+def clgLogin():
+    return render_template("collage/collage-login.html")

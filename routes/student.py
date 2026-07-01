@@ -1,7 +1,7 @@
 from flask import Blueprint,app,render_template,request,session,redirect,flash,url_for
 from models import Student
 from extensions import db
-from email_utils import send_email,send_pass,send_login_info
+from email_utils import send_otp,send_pass,send_login_info
 from random import randrange
 
 student = Blueprint("student",__name__)
@@ -54,7 +54,7 @@ def stdRegisterSubmit():
     # session["div"] = div
     # session["otp"] = otptemp
     # session["alert"] = ""
-    send_email(gmail,otptemp)
+    send_otp(gmail,otptemp)
     return redirect(url_for("otp"))
 
 @student.route("/otp", methods=["GET", "POST"])
