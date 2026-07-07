@@ -16,14 +16,14 @@ app = Flask(__name__)
 
 app.secret_key = os.getenv("SECRET_KEY")
 
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DB_URL")
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+# app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DB_URL")
+# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-# app.config["SQLALCHEMY_DATABASE_URI"] = (
-#     os.environ.get("DB_URL")
-#     or "sqlite:///users.db"
-# )
-# app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+app.config["SQLALCHEMY_DATABASE_URI"] = (
+    os.environ.get("DB_URL")
+    or "sqlite:///users.db"
+)
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 
 app.permanent_session_lifetime = timedelta(days=7)
@@ -66,10 +66,10 @@ if __name__ == "__main__":
     with app.app_context():
         db.create_all()
 
-    # app.run(
-    #     host="0.0.0.0",
-    #     port=int(os.environ.get("PORT", 5000)),
-    #     debug=True
-    # )
+    app.run(
+        host="0.0.0.0",
+        port=int(os.environ.get("PORT", 5000)),
+        debug=True
+    )
 
-    app.run(debug=True)
+    # app.run(debug=True)
