@@ -4,5 +4,5 @@ matplotlib
 flask
 gunicorn
 flask_sqlalchemy
-dotenv
+python-dotenv
 gunicorn
