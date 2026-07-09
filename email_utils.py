@@ -69,8 +69,8 @@ def send_login_info(to_email):
 
 def clg_register_info(to_email):
 
-    subject = "Your Collage Has Been Added"
-    body = f"Your Collage Has Been Register, Now You Can Login"
+    subject = "Your college Has Been Added"
+    body = f"Your college Has Been Register, Now You Can Login"
 
     msg = MIMEText(body)
     msg["Subject"] = subject

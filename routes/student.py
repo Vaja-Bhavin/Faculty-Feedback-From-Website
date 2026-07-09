@@ -81,7 +81,7 @@ def otp():
         # print("Sem:",sem)
         # print("Div:",div)
         print("OTP:",otp)
-        return render_template("student/verify-otp.html")
+        return render_template("verify-otp.html")
     if request.method == "POST":
         userOtp = request.form.get("otp")
         userOtp = int(userOtp)

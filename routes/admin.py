@@ -1,7 +1,7 @@
 from flask import Blueprint,render_template,request,redirect,url_for,flash,session
 from os import getenv
 from werkzeug.security import generate_password_hash, check_password_hash
-from models import Collage
+from models import college
 from extensions import db
 from email_utils import clg_register_info
 
@@ -30,7 +30,7 @@ def adminLogin():
         flash("Password Incorrect!")
         return redirect(url_for("admin.adminLogin"))
 
-@admin.route("/admin/addcollage",methods=["GET","POST"])
+@admin.route("/admin/addcollege",methods=["GET","POST"])
 def addClg():
 
     if request.method == "POST":
@@ -45,12 +45,12 @@ def addClg():
         hashpw = generate_password_hash("pw")
         print(cc,name,mail,cn,addr,uni,web,pw,hashpw)
         
-        c1 = Collage(college_code=cc,college_name=name,email=mail,contact_no=cn,address=addr,university=uni,website=web,password=hashpw)
+        c1 = college(college_code=cc,college_name=name,email=mail,contact_no=cn,address=addr,university=uni,website=web,password=hashpw)
         db.session.add(c1)
         db.session.commit()
         clg_register_info(mail)
         return redirect(url_for("admin.adminHome"))
 
     if "is_admin" in session:
-        return render_template("admin/add-collage.html")
+        return render_template("admin/add-college.html")
     return redirect(url_for("admin.adminLogin"))

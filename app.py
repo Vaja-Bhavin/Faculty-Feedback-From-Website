@@ -1,13 +1,12 @@
 from flask import Flask,render_template,request,redirect,url_for,session,flash
 from extensions import db
 from models import Student
-from flask_sqlalchemy import SQLAlchemy
 
 import os
 from dotenv import load_dotenv
 from routes.student import student
 from routes.faculty import faculty
-from routes.collage import collage
+from routes.college import college
 from routes.admin import admin
 from datetime import timedelta
 
@@ -58,7 +57,7 @@ def logout():
 
 app.register_blueprint(student)
 app.register_blueprint(faculty)
-app.register_blueprint(collage)
+app.register_blueprint(college)
 app.register_blueprint(admin)
 
 

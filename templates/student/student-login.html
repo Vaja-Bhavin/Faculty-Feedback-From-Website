@@ -26,9 +26,23 @@ Student - Login
             {% endfor %}
             {% endif %}
             {% endwith %}
-            
+
             <div class="box-btn">
                 <button class="sub" type="submit"><span>Login</span></button>
+            </div>
+            <div class="login-extra">
+
+                <a href="/student/forgot-password" class="forgot">
+                    Forgot Password?
+                </a>
+
+                <div class="new-user">
+                    <span>New Student?</span>
+                    <a href="/student/register">
+                        Create Account
+                    </a>
+                </div>
+
             </div>
         </form>
 

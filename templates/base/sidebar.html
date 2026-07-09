@@ -11,7 +11,7 @@
                 </a></li>
             <li class="expli">
                 <div class="exp">
-                    <div class="outer" style="display: flex; flex-direction: row;">
+                    <div class="outer">
                         <h3>
                             Student
                         </h3>
@@ -29,7 +29,7 @@
             </li>
             <li class="expli">
                 <div class="exp">
-                    <div class="outer" style="display: flex; flex-direction: row;">
+                    <div class="outer">
                         <h3>
                             Faculty
                         </h3>
@@ -45,23 +45,25 @@
             </li>
             <li class="expli">
                 <div class="exp">
-                    <div class="outer" style="display: flex; flex-direction: row;">
+                    <div class="outer">
                         <h3>
-                            Collage
+                            College
                         </h3>
                         <img src="{{ url_for('static',filename='image/caret.svg' ) }}" alt="">
                     </div>
                     <div class="stdlinks">
                         <ul>
-                            <li><a href="/collage/home">Home - Collage</a></li>
+                            <li><a href="/college/home">Home - College</a></li>
                             <!-- <li><a href="/student/givefeedback">Give Feedback</a></li> -->
                         
-                            <li><a href="/collage/register">Register - Collage</a></li>
-                            <li><a href="/collage/login">Login - Collage</a></li>
+                            <li><a href="/college/register">Register - College</a></li>
+                            <li><a href="/college/login">Login - College</a></li>
                         </ul>
                     </div>
                 </div>
             </li>
+            <li><a class="outera" href="{{ url_for('about' ) }}">About Us
+                </a></li>
         </ul>
 
 

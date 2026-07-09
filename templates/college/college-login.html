@@ -1,6 +1,6 @@
 {% extends 'base/base.html' %}
 {% block title %}
-Collage - Login
+college - Login
 {% endblock %}
 
 {% block content %}
@@ -10,7 +10,7 @@ Collage - Login
         <h2>Login</h2>
         <form action="" method="POST">
             <div class="box-inp">
-                <label for="en">Collage Code:</label>
+                <label for="en">College Code:</label>
                 <input type="number" name="en" id="en" required>
             </div>
             <div class="box-inp">
@@ -29,8 +29,12 @@ Collage - Login
             
             <div class="box-btn">
                 <button class="sub" type="submit"><span>Login</span></button>
+            </div><div class="login-extra">
+
+                <a href="/student/forgot-password" class="forgot">
+                    Forgot Password?
+                </a>
             </div>
-            <div class="fp"><a href="">Forget Password?</a></div>
         </form>
 
     </div>

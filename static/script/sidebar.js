@@ -1,16 +1,23 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const hb = document.querySelector(".hb");
-    const sb = document.querySelector(".sidebar");
-    const cl = document.querySelector(".cancel");
-    const blur = document.querySelector(".blur")
+document.addEventListener("DOMContentLoaded",()=>{
 
-    hb.addEventListener("click", () => {
-        sb.classList.add("active");
-        blur.style.display="block";
+    const sidebar = document.querySelector(".sidebar");
+    const closeBtn = document.querySelector(".cancel");
+    const blur = document.querySelector(".blur");
+    const menuBtn = document.querySelector(".hb");
+    menuBtn.addEventListener("click",()=>{
+
+        sidebar.classList.add("active");
+        blur.classList.add("active");
+
     });
 
-    cl.addEventListener("click", () => {
-        sb.classList.remove("active");
-        blur.style.display="none";
+    closeBtn.addEventListener("click",()=>{
+        sidebar.classList.remove("active");
+        blur.classList.remove("active");
+    });
+
+    blur.addEventListener("click",()=>{
+        sidebar.classList.remove("active");
+        blur.classList.remove("active");
     });
 });

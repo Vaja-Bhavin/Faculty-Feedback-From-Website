@@ -8,7 +8,7 @@ class Student(db.Model):
     div = db.Column(db.String(1))
     password = db.Column(db.String(8))
 
-class Collage(db.Model):
+class college(db.Model):
     id = db.Column(db.Integer, primary_key=True)
 
     college_code = db.Column(db.String(20), unique=True, nullable=False)

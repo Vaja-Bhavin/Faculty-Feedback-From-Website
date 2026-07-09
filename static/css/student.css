@@ -1,59 +1,319 @@
-.info {
-    padding: 20px;
-    box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.12);
-    margin: 10px;
-    margin-top: 20px;
-    border-radius: 15px;
-    background-color: #fff;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-.info-1 {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-top: 10px;
-}
+
+
 body {
-    background-color:#f5f7fb ;
+
+    background: #f4f7fb;
+
+    font-family: Arial, Helvetica, sans-serif;
+
 }
-.box-logout {
+
+
+/* Main */
+
+main {
+
+    min-height: calc(100vh - 70px);
+
+    padding: 40px;
+
     display: flex;
-    margin-top: 10px;
-    align-self: center;
-    justify-content: right;
+
+    gap: 40px;
+
 }
 
-.lo>h4 {
-    display: inline;
-    font-size: 19px;
+
+
+/* Student info card */
+
+.info {
+
+    width: 380px;
+
+    height: fit-content;
+
+    background: white;
+
+    padding: 30px;
+
+    border-radius: 20px;
+
+
+    box-shadow:
+    0 12px 35px rgba(0,0,0,0.15);
+
+
+    position: relative;
+
+    overflow: hidden;
+
 }
 
-.lo>h4:hover {
-    font-size: 19px;
-    text-shadow: 0px 0px 15px black;
+
+
+/* Top blue border */
+
+.info::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 7px;
+
+
+    background: linear-gradient(
+        90deg,
+        #1e3c72,
+        #2a5298
+    );
+
 }
+
+
+
+/* Heading */
 
 .t1 {
+
     text-align: center;
-    /* background: linear-gradient(to right, rgb(72, 0, 255), rgb(129, 30, 196));
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent; */
+
+    color: #1e3c72;
+
+    font-size: 26px;
+
+    margin-bottom: 25px;
+
 }
+
+
+
+/* Information */
+
+.info-1 {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+
+}
+
+
+.info-1 h3 {
+
+    background: #f4f7fb;
+
+    padding: 14px;
+
+    border-radius: 10px;
+
+
+    font-size: 16px;
+
+    color: #333;
+
+    font-weight: 500;
+
+}
+
+
+
+/* Logout */
+
+.box-logout {
+
+    margin-top: 30px;
+
+    display: flex;
+
+    justify-content: center;
+
+}
+
+
+.lo {
+
+    text-decoration: none;
+
+}
+
+
+.lo h4 {
+
+    background: #ff4b5c;
+
+    color: white;
+
+
+    padding: 12px 45px;
+
+
+    border-radius: 25px;
+
+
+    transition: 0.3s;
+
+}
+
+
+
+.lo h4:hover {
+
+    background: #e63946;
+
+
+    transform: translateY(-3px);
+
+
+    box-shadow:
+    0 8px 20px rgba(255,75,92,0.4);
+
+}
+
+
+
+/* Available form section */
+
 
 .forms {
-    padding-top: 20px;
+
+    flex: 1;
+
+    min-height: 300px;
+
+
+    background: white;
+
+
+    padding: 30px;
+
+
+    border-radius: 20px;
+
+
+    box-shadow:
+    0 12px 35px rgba(0,0,0,0.15);
+
+
+    position: relative;
+
+    overflow: hidden;
+
 }
 
-.forms>h2 {
-    text-align: center;
-    background: linear-gradient(to right, rgb(72, 0, 255), rgb(129, 30, 196));
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+
+
+.forms::before {
+
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+
+    height: 7px;
+    width: 100%;
+
+
+    background: linear-gradient(
+        90deg,
+        #1e3c72,
+        #2a5298
+    );
+
 }
 
-@media (max-width:480px) {
-    .info {
-        padding: 20px 15px;
+
+
+.forms h2 {
+
+
+    color: #1e3c72;
+
+    font-size: 26px;
+
+
+}
+
+
+
+/* Mobile */
+
+@media(max-width:800px){
+
+
+    main {
+
+        flex-direction: column;
+
+        padding: 25px;
+
     }
+
+
+    .info {
+
+        width: 100%;
+
+    }
+
+
+    .forms {
+
+        width: 100%;
+
+    }
+
+
+}
+
+
+
+@media(max-width:450px){
+
+
+    main {
+
+        padding: 15px;
+
+    }
+
+
+    .t1,
+    .forms h2 {
+
+        font-size: 22px;
+
+    }
+
+
+    .info {
+
+        padding: 25px 18px;
+
+    }
+
+
+    .info-1 h3 {
+
+        font-size: 14px;
+
+    }
+
+
 }

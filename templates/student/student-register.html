@@ -8,45 +8,51 @@ Student - Register
 <div class="box-1">
     <div class="box-2">
         <h2>Register</h2>
-    <form action="/student/register/submit" method="POST">
-        <div class="box-inp">
-            <label for="en">Enrollment No:</label>
-            <input type="number" name="en" id="en" required>
-        </div>
-        <div class="box-inp">
-            <label for="name">Name:</label>
-            <input type="text" name="name" id="name" required>
-        </div>
-        <div class="box-inp">
-            <label for="mail">Gmail:</label>
-            <input type="email" name="gmail" id="gmail" required>
-        </div>
-        <div class="box-inp">
-            <label for="sem">Sem:</label>
-            <select name="sem" id="sem" required>
-                <option disabled selected>Select Your Sem</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-            </select>
-            <!-- <input type="number" name="sem" id="sem" required> -->
-        </div>
-        <div class="box-inp">
-            <label for="div">Div:</label>
-            <select name="div" id="div" required>
-                <option disabled selected>Select Your Division</option>
-                <option value="A">A</option>
-                <option value="B">B</option>
-                <option value="C">C</option>
-            </select>
-        </div>
-        <div class="box-btn">
-            <button class="sub" type="submit"><span>Register</span></button>
-        </div>
-    </form>
+        <form action="/student/register/submit" method="POST">
+            <div class="box-inp">
+                <label for="en">Enrollment No:</label>
+                <input type="number" name="en" id="en" required>
+            </div>
+            <div class="box-inp">
+                <label for="name">Name:</label>
+                <input type="text" name="name" id="name" required>
+            </div>
+            <div class="box-inp">
+                <label for="mail">Gmail:</label>
+                <input type="email" name="gmail" id="gmail" required>
+            </div>
+            <div class="box-inp">
+                <label for="sem">Sem:</label>
+                <select name="sem" id="sem" required>
+                    <option disabled selected>Select Your Sem</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                </select>
+                <!-- <input type="number" name="sem" id="sem" required> -->
+            </div>
+            <div class="box-inp">
+                <label for="div">Div:</label>
+                <select name="div" id="div" required>
+                    <option disabled selected>Select Your Division</option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                </select>
+            </div>
+            <div class="box-btn">
+                <button class="sub" type="submit"><span>Register</span></button>
+            </div>
+            <div class="account-extra">
+                <span>Already have an account?</span>
+                <a href="/student/login">
+                    Login
+                </a>
+            </div>
+        </form>
 
     </div>
 </div>
