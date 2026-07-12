@@ -17,14 +17,14 @@ app = Flask(__name__)
 
 app.secret_key = os.getenv("SECRET_KEY")
 
-# app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DB_URL")
-# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DB_URL")
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-app.config["SQLALCHEMY_DATABASE_URI"] = (
-    os.environ.get("DB_URL")
-    or "sqlite:///users.db"
-)
-app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+# app.config["SQLALCHEMY_DATABASE_URI"] = (
+#     os.environ.get("DB_URL")
+#     or "sqlite:///users.db"
+# )
+# app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 
 app.permanent_session_lifetime = timedelta(days=7)
@@ -57,8 +57,8 @@ def logout():
     session.clear()
     return redirect(url_for("home"))
 
-@app.route("/forgot-password",methods=["GET","POST"])
-def forget():
+@app.route("/forgot-password", methods=["GET","POST"])
+def forgot():
     show_otp = False
     if request.method == "POST":
         action = request.form.get("action")
@@ -68,7 +68,7 @@ def forget():
             mail = request.form.get("mail")
 
             if role == "student":
-                user = Student.query.filter_by(email=mail).first()
+                user = Student.query.filter_by(gmail=mail).first()
 
             # elif role == "faculty":
             #     user = Faculty.query.filter_by(email=mail).first()
@@ -77,18 +77,27 @@ def forget():
                 user = college.query.filter_by(email=mail).first()
 
             if user:
-                otp =random.randint(000000,999999)
+                otp = str(random.randint(000000,999999))
                 session[otp] = {
                     "role":role,
                     "mail":mail,
                     "otp":otp
                 }
-                send_otp(mail,otp)
+                print("otp")
+                # send_otp(mail,otp)
 
                 show_otp = True
                 flash("OTP sent successfully.")
             else:
                 flash("Email not found.")
+
+        elif action == "verify-otp":
+            userotp = request.form.get("otp")
+            if userotp == request.form.get("otp"):
+                return render_template("reset-password.html")
+            else:
+                flash("OTP Inc")
+
 
                 
     return render_template("forgot-password.html",show_otp=show_otp)
@@ -103,10 +112,10 @@ if __name__ == "__main__":
     with app.app_context():
         db.create_all()
 
-    # app.run(
-    #     host="0.0.0.0",
-    #     port=int(os.environ.get("PORT", 5000)),
-    #     debug=True
-    # )
+    app.run(
+        host="0.0.0.0",
+        port=int(os.environ.get("PORT", 5000)),
+        debug=True
+    )
 
-    app.run(debug=True)
+    # app.run(debug=True)
