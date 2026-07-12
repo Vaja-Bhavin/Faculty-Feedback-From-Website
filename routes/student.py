@@ -55,9 +55,9 @@ def stdRegisterSubmit():
     # session["otp"] = otptemp
     # session["alert"] = ""
     send_otp(gmail,otptemp)
-    return redirect(url_for("otp"))
+    return redirect(url_for("student.otp"))
 
-@student.route("/otp", methods=["GET", "POST"])
+@student.route("/student/otp", methods=["GET", "POST"])
 def otp():
     data = session.get("registration")
     # en = session.get("en")
