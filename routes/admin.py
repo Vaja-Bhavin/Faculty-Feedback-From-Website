@@ -1,7 +1,7 @@
 from flask import Blueprint,render_template,request,redirect,url_for,flash,session
 from os import getenv
 from werkzeug.security import generate_password_hash, check_password_hash
-from models import college
+from models import College
 from extensions import db
 from email_utils import clg_register_info
 
@@ -45,7 +45,7 @@ def addClg():
         hashpw = generate_password_hash("pw")
         print(cc,name,mail,cn,addr,uni,web,pw,hashpw)
         
-        c1 = college(college_code=cc,college_name=name,email=mail,contact_no=cn,address=addr,university=uni,website=web,password=hashpw)
+        c1 = College(college_code=cc,college_name=name,email=mail,contact_no=cn,address=addr,university=uni,website=web,password=hashpw)
         db.session.add(c1)
         db.session.commit()
         clg_register_info(mail)

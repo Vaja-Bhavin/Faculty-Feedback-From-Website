@@ -1,6 +1,7 @@
 from flask import Flask,render_template,request,redirect,url_for,session,flash
+from werkzeug.security import generate_password_hash
 from extensions import db
-from models import Student,college
+from models import Student,College
 
 import os
 from dotenv import load_dotenv
@@ -74,16 +75,16 @@ def forgot():
             #     user = Faculty.query.filter_by(email=mail).first()
 
             elif role == "college":
-                user = college.query.filter_by(email=mail).first()
+                user = College.query.filter_by(email=mail).first()
 
             if user:
                 otp = str(random.randint(000000,999999))
-                session[otp] = {
+                session["otp"] = {
                     "role":role,
                     "mail":mail,
                     "otp":otp
                 }
-                print("otp")
+                print(otp)
                 # send_otp(mail,otp)
 
                 show_otp = True
@@ -93,14 +94,44 @@ def forgot():
 
         elif action == "verify-otp":
             userotp = request.form.get("otp")
-            if userotp == request.form.get("otp"):
-                return render_template("reset-password.html")
+            otpdata =  session.get("otp")
+            if userotp == otpdata["otp"]:
+                return render_template("reset-password.html",title="Reset Password",action="/reset-password")
             else:
-                flash("OTP Inc")
-
-
-                
+                show_otp = True
+                flash("OTP Incorrect!")
+       
     return render_template("forgot-password.html",show_otp=show_otp)
+
+@app.route("/reset-password",methods=["POST"])
+def resetPassword():
+    pw = request.form.get("pw")
+    cpw = request.form.get("cpw")
+    if pw == cpw:
+        otpdata = session.get("otp")
+        role = otpdata["role"]
+        mail = otpdata["mail"]
+        new_password = generate_password_hash("cpw")
+        if role == "student":
+            print(cpw)
+            user = Student.query.filter_by(gmail=mail).first()
+
+        # elif role == "faculty":
+        #     user = Faculty.query.filter_by(email=email).first()
+
+        elif role == "college":
+            user = College.query.filter_by(email=mail).first()
+
+        if user:
+            print(new_password)
+            user.password = new_password
+            db.session.commit()
+            session.pop("otp",None)
+    else:
+        flash("Password Didn't Match!")
+        return render_template("reset-password.html",title="Reset Password",action="/reset-password")
+    return redirect(url_for("student.studentLogin"))
+
 
 app.register_blueprint(student)
 app.register_blueprint(faculty)

@@ -6,9 +6,9 @@ class Student(db.Model):
     gmail = db.Column(db.String(50))
     sem = db.Column(db.Integer)
     div = db.Column(db.String(1))
-    password = db.Column(db.String(8))
+    password = db.Column(db.String(255))
 
-class college(db.Model):
+class College(db.Model):
     id = db.Column(db.Integer, primary_key=True)
 
     college_code = db.Column(db.String(20), unique=True, nullable=False)

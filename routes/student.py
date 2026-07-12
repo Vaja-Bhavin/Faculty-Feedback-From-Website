@@ -3,6 +3,7 @@ from models import Student
 from extensions import db
 from email_utils import send_otp,send_pass,send_login_info
 from random import randrange
+from werkzeug.security import generate_password_hash,check_password_hash
 
 student = Blueprint("student",__name__)
 
@@ -67,11 +68,11 @@ def otp():
     # div = session.get("div")
     # otp = session.get("otp")
 
-    en=data["en"],
-    name=data["name"],
-    gmail=data["gmail"],
-    sem=data["sem"],
-    div=data["div"],
+    en=data["en"]
+    name=data["name"]
+    gmail=data["gmail"]
+    sem=data["sem"]
+    div=data["div"]
     otp = data["otp"]
     if request.method == "GET":
         
@@ -82,13 +83,15 @@ def otp():
         # print("Div:",div)
         print("OTP:",otp)
         return render_template("verify-otp.html")
+    
     if request.method == "POST":
         userOtp = request.form.get("otp")
         userOtp = int(userOtp)
         if otp == userOtp:
             print("OTP Correct!")
             password = str(randrange(11111111,99999999))
-            s1 = Student(en=en,name=name,gmail=gmail,sem=sem,div=div,password=password)
+            hashed = generate_password_hash(password)
+            s1 = Student(en=en,name=name,gmail=gmail,sem=sem,div=div,password=hashed)
             db.session.add(s1)
             db.session.commit()
             session.pop("registration", None)
@@ -110,7 +113,7 @@ def stdLoginSubmit():
     pass1 = request.form.get("pass")
 
     s1 = Student.query.filter_by(en=en1).first()
-    if s1 and pass1 == s1.password:
+    if s1 and check_password_hash(s1.password, pass1):
         session["student_en"] = s1.en
         send_login_info(s1.gmail)
         session.permanent = True
@@ -118,5 +121,5 @@ def stdLoginSubmit():
         return redirect(url_for("student.studentHome"))
     else:
         flash("Enrollment Or Password Is Incorrect")
-        print("Enrollment Or Password Is Incorrect")
+        # print("Enrollment Or Password Is Incorrect")
         return redirect(url_for("student.studentLogin"))
