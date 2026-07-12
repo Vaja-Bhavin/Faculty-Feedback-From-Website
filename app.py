@@ -1,6 +1,6 @@
 from flask import Flask,render_template,request,redirect,url_for,session,flash
 from extensions import db
-from models import Student
+from models import Student,college
 
 import os
 from dotenv import load_dotenv
@@ -8,7 +8,9 @@ from routes.student import student
 from routes.faculty import faculty
 from routes.college import college
 from routes.admin import admin
+from email_utils import send_otp
 from datetime import timedelta
+import random
 
 load_dotenv()
 app = Flask(__name__)
@@ -55,9 +57,41 @@ def logout():
     session.clear()
     return redirect(url_for("home"))
 
-@app.route("/forgot-password")
+@app.route("/forgot-password",methods=["GET","POST"])
 def forget():
-    return render_template("forgot-password.html")
+    show_otp = False
+    if request.method == "POST":
+        action = request.form.get("action")
+
+        if action == "send-otp":
+            role = request.form.get("role")
+            mail = request.form.get("mail")
+
+            if role == "student":
+                user = Student.query.filter_by(email=mail).first()
+
+            # elif role == "faculty":
+            #     user = Faculty.query.filter_by(email=mail).first()
+
+            elif role == "college":
+                user = college.query.filter_by(email=mail).first()
+
+            if user:
+                otp =random.randint(000000,999999)
+                session[otp] = {
+                    "role":role,
+                    "mail":mail,
+                    "otp":otp
+                }
+                send_otp(mail,otp)
+
+                show_otp = True
+                flash("OTP sent successfully.")
+            else:
+                flash("Email not found.")
+
+                
+    return render_template("forgot-password.html",show_otp=show_otp)
 
 app.register_blueprint(student)
 app.register_blueprint(faculty)
