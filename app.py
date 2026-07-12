@@ -55,6 +55,10 @@ def logout():
     session.clear()
     return redirect(url_for("home"))
 
+@app.route("/forgot-password")
+def forget():
+    return render_template("forgot-password.html")
+
 app.register_blueprint(student)
 app.register_blueprint(faculty)
 app.register_blueprint(college)
@@ -65,10 +69,10 @@ if __name__ == "__main__":
     with app.app_context():
         db.create_all()
 
-    app.run(
-        host="0.0.0.0",
-        port=int(os.environ.get("PORT", 5000)),
-        debug=True
-    )
+    # app.run(
+    #     host="0.0.0.0",
+    #     port=int(os.environ.get("PORT", 5000)),
+    #     debug=True
+    # )
 
-    # app.run(debug=True)
+    app.run(debug=True)
