@@ -113,7 +113,8 @@ def stdLoginSubmit():
     pass1 = request.form.get("pass")
 
     s1 = Student.query.filter_by(en=en1).first()
-    if s1 and check_password_hash(s1.password, pass1):
+    print(s1.password)
+    if s1 and check_password_hash(s1.password,pass1):
         session["student_en"] = s1.en
         send_login_info(s1.gmail)
         session.permanent = True

@@ -111,7 +111,7 @@ def resetPassword():
         otpdata = session.get("otp")
         role = otpdata["role"]
         mail = otpdata["mail"]
-        new_password = generate_password_hash("cpw")
+        hashed = generate_password_hash(cpw)
         if role == "student":
             print(cpw)
             user = Student.query.filter_by(gmail=mail).first()
@@ -123,14 +123,14 @@ def resetPassword():
             user = College.query.filter_by(email=mail).first()
 
         if user:
-            print(new_password)
-            user.password = new_password
+            print(hashed)
+            user.password = hashed
             db.session.commit()
             session.pop("otp",None)
     else:
         flash("Password Didn't Match!")
         return render_template("reset-password.html",title="Reset Password",action="/reset-password")
-    return redirect(url_for("student.studentLogin"))
+    return redirect(url_for("/"))
 
 
 app.register_blueprint(student)
@@ -143,10 +143,10 @@ if __name__ == "__main__":
     with app.app_context():
         db.create_all()
 
-    app.run(
-        host="0.0.0.0",
-        port=int(os.environ.get("PORT", 5000)),
-        debug=True
-    )
+    # app.run(
+    #     host="0.0.0.0",
+    #     port=int(os.environ.get("PORT", 5000)),
+    #     debug=True
+    # )
 
-    # app.run(debug=True)
+    app.run(debug=True)

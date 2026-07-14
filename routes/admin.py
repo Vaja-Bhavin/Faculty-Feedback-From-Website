@@ -52,5 +52,5 @@ def addClg():
         return redirect(url_for("admin.adminHome"))
 
     if "is_admin" in session:
-        return render_template("admin/add-college.html")
+        return render_template("admin/add-collage.html")
     return redirect(url_for("admin.adminLogin"))
